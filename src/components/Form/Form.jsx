@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 import { useDispatch, useSelector } from "react-redux";
 import { getContacts } from "../../redux/selectors";
-import { addContact } from "../../redux/operations";
+import { addContactThunk } from "../../redux/operations";
 
 export const Form = () =>{
 const [name,setName]=useState('')
@@ -14,12 +14,11 @@ const[number,setNumber]=useState('');
  const dispatch=useDispatch();
 
  const createContact = ({name, phone}) => ({
-          
             name,
             phone,
           });
 
-const addContactToState= contact => dispatch(addContact(contact))
+const addContactToState= contact => dispatch(addContactThunk(contact))
 
    const  handleChange = event => {
       const { name, value } = event.currentTarget;
